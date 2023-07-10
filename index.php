@@ -2,7 +2,7 @@
 
 spl_autoload_register();
 
-use App\Objects\student;
+use App\Objects\Student;
 ?>
 
 <!DOCTYPE html>

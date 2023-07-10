@@ -1,3 +1,12 @@
+<?php
+
+spl_autoload_register();
+
+use App\Objects\School;
+use App\Objects\PrimarySchool;
+use App\Objects\MiddleSchool;
+use App\Objects\HighSchool;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,25 +33,30 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
-            <p class="exercice-txt"> 
+            <p class="exercice-txt">
                 Créer une classe permettant de gérer des écoles avec un nom d'école et une ville.
                 <br>
                 Créer 2 écoles et afficher leurs proprités.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                $firstSchool = new School("Michel Le Grand", "Jouy en Josas");
+                $secondSchool = new School("Damien 2", "La queue en brie");
+                var_dump($firstSchool, $secondSchool);
 
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
-            <p class="exercice-txt"> 
+            <p class="exercice-txt">
                 Créer 3 classes correspondants aux 3 types d'école suivants : primaire, des collège et des lycée.
                 <br>
                 Pour chaque type d'école définir la liste des niveaux scolaires qu'il prend en charge (ex de niveau scolaire : "CP", "CM2", "5ème", "Terminale", ...).
@@ -50,37 +64,59 @@
                 Créer une école de chaque type.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                $primarySchool = new PrimarySchool("école primaire", "ville primaire");
+                // $primarySchool->setSupportedLevels(["CP", "CE1", "CE2", "CM1", "CM2"]);
+                var_dump($primarySchool);
+
+                $middleSchool = new MiddleSchool("collège", "ville collège");
+                // $middleSchool->setSupportedLevels(["6ème", "5ème", "4ème", "3ème"]);
+                var_dump($middleSchool);
+
+                $highSchool = new HighSchool("lycée", "ville lycée");
+                // $highSchool->setSupportedLevels(["Seconde", "Première", "Terminale"]);
+                var_dump($highSchool);
+                ?>
             </div>
         </section>
 
-        
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
-            <p class="exercice-txt"> 
+            <p class="exercice-txt">
                 Créer une méthode permettant d'interroger un type d'école pour savoir s'il prend en charge un niveu scolaire.
                 <br>
                 Tester la méthode créée.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                $levelToCheck = "Seconde";
+
+                echo "L'école primaire prend en charge le niveau $levelToCheck : " . ($primarySchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . "." . "<br>";
+                echo "Le collège prend en charge le niveau $levelToCheck : " . ($middleSchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . "." . "<br>";
+                echo "Le lycée prend en charge le niveau $levelToCheck : " . ($highSchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . ".";
+
+                ?>
             </div>
         </section>
 
         <!-- QUESTION 4 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 4</h2>
-            <p class="exercice-txt"> 
+            <p class="exercice-txt">
                 Remplacer les propriétés "école" des élèves et des professeurs par la classe créée.
                 <br>
                 Ajuster le code de toutes les classes afin que tous les exercices précédents fonctionnent à nouveau.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>
