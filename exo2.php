@@ -1,3 +1,10 @@
+<?php
+
+spl_autoload_register();
+
+use App\Objects\Teacher;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,70 +44,6 @@
             </p>
             <div class="exercice-sandbox">
                 <?php
-                class Teacher
-                {
-                    private string $lastName = "";
-                    private string $firstName = "";
-                    private string $schoolName = "";
-                    private array $subjects = [];
-                    public function __construct(string $lastName, string $firstName)
-                    {
-                        $this->lastName = $lastName;
-                        $this->firstName = $firstName;
-                    }
-
-                    public function getlastName(): string
-                    {
-                        return $this->lastName;
-                    }
-                    public function setLastName(string $lastName): bool
-                    {
-                        return $this->lastName = $lastName;
-                    }
-                    public function getFirstName(): string
-                    {
-                        return $this->firstName;
-                    }
-                    public function setFirstName(string $firstName): bool
-                    {
-                        return $this->firstName = $firstName;
-                    }
-
-                    public function getSchoolName(): string
-                    {
-                        return $this->schoolName;
-                    }
-
-                    public function setSchoolName(string $schoolName)
-                    {
-                        $this->schoolName = $schoolName;
-                    }
-                    public function getSubjects(): array
-                    {
-                        return $this->subjects;
-                    }
-                    public function setSubjects(string $subject): void
-                    {
-                        $this->subjects[] = $subject;
-                    }
-                    public function removeSubject(string $subject): void
-                    {
-                        $index = array_search($subject, $this->subjects);
-                        if ($index == true) {
-                            unset($this->subjects[$index]);
-                        }
-                    }
-                    public function displaySubjects(): string
-                    {
-                        return implode(", ", $this->subjects);
-                    }
-                    public function __toString()
-                    {
-                        return 'Bonjour, je m\'appelle ' . $this->firstName . ' et j\'enseigne à l\'école ' . $this->schoolName .
-                            ' les matières suivantes: ' . $this->displaySubjects() . '.';
-                    }
-                }
-
                 $firstTeacher = new Teacher("Germain", "Michel");
                 $firstTeacher->setSubjects('français');
                 $firstTeacher->setSubjects('histoire');
