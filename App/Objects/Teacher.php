@@ -33,7 +33,7 @@ class Teacher extends Person
     public function removeSubject(string $subject): void
     {
         $index = array_search($subject, $this->subjects);
-        if ($index == true) {
+        if ($index !== false) {
             unset($this->subjects[$index]);
         }
     }

@@ -1,97 +1,36 @@
 <?php
 
-namespace App\Objects {
+namespace App\Objects;
 
-    class School
+class School
+{
+    protected static array $supportedLevels = [];
+
+    protected string $schoolName = "";
+    protected string $schoolCity = "";
+
+    public function __construct(string $schoolName, string $schoolCity)
     {
-        protected string $schoolName = "";
-        protected string $schoolCity = "";
-
-        public function __construct(string $schoolName, string $schoolCity)
-        {
-            $this->schoolName = $schoolName;
-            $this->schoolCity = $schoolCity;
-        }
-        public function getSchoolName(): string
-        {
-            return $this->schoolName;
-        }
-
-        public function setSchoolName(string $schoolName): void
-        {
-            $this->schoolName = $schoolName;
-        }
-        public function getSchoolCity(): string
-        {
-            return $this->schoolCity;
-        }
-
-        public function setSchoolCity(string $schoolCity): void
-        {
-            $this->schoolCity = $schoolCity;
-        }
+        $this->schoolName = $schoolName;
+        $this->schoolCity = $schoolCity;
     }
-    class PrimarySchool extends School
+    public static function supportsLevel(string $level): bool
     {
-        protected array $supportedLevels = ["CP", "CE1", "CE2", "CM1", "CM2"];
-        public function __construct(string $schoolName, string $schoolCity)
-        {
-            parent::__construct($schoolName, $schoolCity);
-        }
-        public function getSupportedLevels(): array
-        {
-            return $this->supportedLevels;
-        }
-
-        public function setSupportedLevels(array $levels): void
-        {
-            $this->supportedLevels = $levels;
-        }
-        public function supportsLevel(string $level): bool
-        {
-            return in_array($level, $this->supportedLevels);
-        }
-    }
-
-    class MiddleSchool extends School
-    {
-        private array $supportedLevels = ["6ème", "5ème", "4ème", "3ème"];
-
-        public function getSupportedLevels(): array
-        {
-            return $this->supportedLevels;
-        }
-
-        public function setSupportedLevels(array $levels): void
-        {
-            $this->supportedLevels = $levels;
-        }
-        public function supportsLevel(string $level): bool
-        {
-            return in_array($level, $this->supportedLevels);
-        }
-    }
-
-    class HighSchool extends School
-    {
-        private array $supportedLevels = ["Seconde", "Première", "Terminale"];
-
-        public function getSupportedLevels(): array
-        {
-            return $this->supportedLevels;
-        }
-
-        public function setSupportedLevels(array $levels): void
-        {
-            $this->supportedLevels = $levels;
-        }
-        public function supportsLevel(string $level): bool
-        {
-            return in_array($level, $this->supportedLevels);
-        }
+        return in_array($level, static::$supportedLevels);
     }
 }
 
+class PrimarySchool extends School
+{
+    public static array $supportedLevels = ["CP", "CE1", "CE2", "CM1", "CM2"];
+}
 
-namespace App\Objects {
+class MiddleSchool extends School
+{
+    protected  static array $supportedLevels = ["6ème", "5ème", "4ème", "3ème"];
+}
+
+class HighSchool extends School
+{
+    protected  static array $supportedLevels = ["Seconde", "Première", "Terminale"];
 }

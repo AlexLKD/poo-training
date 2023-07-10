@@ -66,16 +66,13 @@ use App\Objects\HighSchool;
             <div class="exercice-sandbox">
                 <?php
 
-                $primarySchool = new PrimarySchool("école primaire", "ville primaire");
-                // $primarySchool->setSupportedLevels(["CP", "CE1", "CE2", "CM1", "CM2"]);
+                $primarySchool = new PrimarySchool("école primaire", "ville primaire", PrimarySchool::$supportedLevels);
                 var_dump($primarySchool);
 
                 $middleSchool = new MiddleSchool("collège", "ville collège");
-                // $middleSchool->setSupportedLevels(["6ème", "5ème", "4ème", "3ème"]);
                 var_dump($middleSchool);
 
                 $highSchool = new HighSchool("lycée", "ville lycée");
-                // $highSchool->setSupportedLevels(["Seconde", "Première", "Terminale"]);
                 var_dump($highSchool);
                 ?>
             </div>
@@ -92,13 +89,10 @@ use App\Objects\HighSchool;
             </p>
             <div class="exercice-sandbox">
                 <?php
-
-                $levelToCheck = "Seconde";
-
-                echo "L'école primaire prend en charge le niveau $levelToCheck : " . ($primarySchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . "." . "<br>";
-                echo "Le collège prend en charge le niveau $levelToCheck : " . ($middleSchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . "." . "<br>";
-                echo "Le lycée prend en charge le niveau $levelToCheck : " . ($highSchool->supportsLevel($levelToCheck) ? "Oui" : "Non") . ".";
-
+                $levelToCheck = "CM1";
+                echo "L'école primaire prend en charge la classe de $levelToCheck : " . (PrimarySchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
+                echo "Le collège prend en charge la classe de $levelToCheck : " . (MiddleSchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
+                echo "Le lycée prend en charge la classe de $levelToCheck : " . (HighSchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
                 ?>
             </div>
         </section>
