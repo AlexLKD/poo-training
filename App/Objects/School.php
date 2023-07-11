@@ -18,19 +18,8 @@ class School
     {
         return in_array($level, static::$supportedLevels);
     }
-}
-
-class PrimarySchool extends School
-{
-    public static array $supportedLevels = ["CP", "CE1", "CE2", "CM1", "CM2"];
-}
-
-class MiddleSchool extends School
-{
-    protected  static array $supportedLevels = ["6ème", "5ème", "4ème", "3ème"];
-}
-
-class HighSchool extends School
-{
-    protected  static array $supportedLevels = ["Seconde", "Première", "Terminale"];
+    public static function getSupportedLevels(): array
+    {
+        return static::$supportedLevels;
+    }
 }

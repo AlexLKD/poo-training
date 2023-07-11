@@ -67,13 +67,13 @@ use App\Objects\HighSchool;
                 <?php
 
                 $primarySchool = new PrimarySchool("école primaire", "ville primaire", PrimarySchool::$supportedLevels);
-                var_dump($primarySchool);
+                var_dump($primarySchool, PrimarySchool::getSupportedLevels());
 
                 $middleSchool = new MiddleSchool("collège", "ville collège");
-                var_dump($middleSchool);
+                var_dump($middleSchool, MiddleSchool::getSupportedLevels());
 
                 $highSchool = new HighSchool("lycée", "ville lycée");
-                var_dump($highSchool);
+                var_dump($highSchool, HighSchool::getSupportedLevels());
                 ?>
             </div>
         </section>
