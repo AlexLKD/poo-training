@@ -4,28 +4,14 @@ namespace App\Objects {
 
     use DateTime;
 
-
-    // class Student
-    // {
-    //     private string $lastName = "";
-    //     private string $firstName = "";
-    //     public DateTime $birthdate;
-    //     private string $graduation = "";
-    //     private string $schoolName = "";
-    //     public function __construct(string $lastName, string $firstName, string $graduation)
-    //     {
-    //         $this->lastName = $lastName;
-    //         $this->firstName = $firstName;
-    //         $this->graduation = $graduation;
-    //     }
     class Student extends Person
     {
         private string $graduation = "";
         public DateTime $birthdate;
 
-        public function __construct(string $lastName, string $firstName, string $graduation)
+        public function __construct(string $lastName, string $firstName, School $school, string $graduation)
         {
-            parent::__construct($lastName, $firstName);
+            parent::__construct($lastName, $firstName, $school);
             $this->graduation = $graduation;
         }
 
@@ -51,7 +37,7 @@ namespace App\Objects {
         public function __toString()
         {
             return 'Bonjour, je m\'appelle ' . $this->firstName . ', j\'ai ' . $this->getAge() .
-                ' ans et je vais à l\'école ' . $this->schoolName . ' en classe de ' . $this->graduation . '.';
+                ' ans et je vais à l\'école ' . $this->school->getSchoolName() . ' en classe de ' . $this->graduation . '.';
         }
     }
 }

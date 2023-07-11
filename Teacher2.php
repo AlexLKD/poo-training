@@ -6,21 +6,19 @@ class Teacher extends Person
 {
     private array $subjects = [];
 
-    public function __construct(string $lastName, string $firstName, School $school)
+    public function __construct(string $lastName, string $firstName)
     {
-        parent::__construct($lastName, $firstName, $school);
+        parent::__construct($lastName, $firstName);
     }
 
     public function getSubjects(): array
     {
         return $this->subjects;
     }
-
     public function setSubjects(string $subject): void
     {
         $this->subjects[] = $subject;
     }
-
     public function removeSubject(string $subject): void
     {
         $index = array_search($subject, $this->subjects);
@@ -32,10 +30,9 @@ class Teacher extends Person
     {
         return implode(", ", $this->subjects);
     }
-
-    public function __toString(): string
+    public function __toString()
     {
-        $subjectList = implode(", ", $this->subjects);
-        return "Bonjour, je m'appelle " . $this->firstName . " " . $this->lastName . ", j'enseigne à l'école " . $this->school->getSchoolName() . ". Matières enseignées : " . $subjectList;
+        return 'Bonjour, je m\'appelle ' . $this->firstName . ' et j\'enseigne à l\'école ' . $this->schoolName .
+            ' les matières suivantes: ' . $this->displaySubjects() . '.';
     }
 }

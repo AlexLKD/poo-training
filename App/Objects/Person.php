@@ -7,12 +7,13 @@ namespace App\Objects {
     {
         protected string $lastName = "";
         protected string $firstName = "";
-        protected string $schoolName = "";
+        protected School $school;
 
-        public function __construct(string $lastName, string $firstName)
+        public function __construct(string $lastName, string $firstName, School $school)
         {
             $this->lastName = $lastName;
             $this->firstName = $firstName;
+            $this->school = $school;
         }
 
         public function getLastName(): string
@@ -35,14 +36,14 @@ namespace App\Objects {
             $this->firstName = $firstName;
         }
 
-        public function getSchoolName(): string
+        public function getSchool(): School
         {
-            return $this->schoolName;
+            return $this->school;
         }
 
-        public function setSchoolName(string $schoolName): void
+        public function setSchool(School $school): void
         {
-            $this->schoolName = $schoolName;
+            $this->school = $school;
         }
     }
 }

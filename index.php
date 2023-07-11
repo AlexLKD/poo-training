@@ -3,6 +3,7 @@
 spl_autoload_register();
 
 use App\Objects\Student;
+use App\Objects\HighSchool;
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +45,10 @@ use App\Objects\Student;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                $firstStudent = new Student("Germain", "Michel", "Baccalauréat");
+                $newSchool = new HighSchool("Jean Jaurès", "Jouy en Josas");
+                $firstStudent = new Student("Germain", "Michel", $newSchool, "Baccalauréat");
                 $firstStudent->birthdate = new DateTime("1992-05-15");
-                $secondStudent = new Student("Leroy", "Daniel", "BEP");
+                $secondStudent = new Student("Leroy", "Daniel", $newSchool, "BEP");
                 $secondStudent->birthdate = new DateTime("1947-12-10");
 
                 var_dump($firstStudent, $secondStudent);
@@ -121,8 +123,7 @@ use App\Objects\Student;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                $firstStudent->setSchoolName('Jean Jaurès');
-                $firstStudent->setSchoolName('Victor Hugo');
+                $newSchool->setSchoolName('Victor Hugo');
                 var_dump($firstStudent, $secondStudent);
                 ?>
             </div>

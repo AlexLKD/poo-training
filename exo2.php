@@ -2,7 +2,10 @@
 
 spl_autoload_register();
 
+use App\Objects\Student;
 use App\Objects\Teacher;
+use App\Objects\School;
+use App\Objects\PrimarySchool;
 ?>
 
 <!DOCTYPE html>
@@ -44,16 +47,15 @@ use App\Objects\Teacher;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                $firstTeacher = new Teacher("Germain", "Michel");
+
+                $primarySchool = new PrimarySchool("Jean Jaurès", "Jouy en Josas");
+                $firstTeacher = new Teacher("Germain", "Michel", $primarySchool);
+                $secondTeacher = new Teacher("Leroy", "Daniel", $primarySchool);
                 $firstTeacher->setSubjects('français');
                 $firstTeacher->setSubjects('histoire');
-                $firstTeacher->setSchoolName("Jean Jaurès");
-                $secondTeacher = new Teacher("Leroy", "Daniel");
                 $secondTeacher->setSubjects('SVT');
                 $secondTeacher->setSubjects('Sports');
-                $secondTeacher->setSchoolName("Victor Hugo");
-
-                var_dump($firstTeacher, $secondTeacher)
+                var_dump($firstTeacher, $secondTeacher);
                 ?>
             </div>
         </section>
@@ -71,8 +73,7 @@ use App\Objects\Teacher;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                $firstTeacher->setSchoolName('oui');
-                $secondTeacher->setSchoolName('non');
+                $primarySchool->setSchoolName('oui');
                 var_dump($firstTeacher, $secondTeacher);
                 ?>
             </div>
