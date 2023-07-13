@@ -5,6 +5,7 @@ namespace App\Objects;
 class Teacher extends Person
 {
     private array $subjects = [];
+    protected static $introduce = "Bonjour, je m'appelle ##firstname## ##lastname##, j'enseigne à l'école ##schoolname##. Matières enseignées : ##subjects## ";
 
     public function __construct(string $lastName, string $firstName, School $school)
     {
@@ -32,7 +33,15 @@ class Teacher extends Person
     {
         return implode(", ", $this->subjects);
     }
-
+    public function introduceMyself(): string
+    {
+        return self::getIntroduction([
+            'firstname' => $this->firstName,
+            'lastname' => $this->lastName,
+            'schoolname' => $this->school->getSchoolName(),
+            'subjects' => $this->displaySubjects()
+        ]);
+    }
     public function __toString(): string
     {
         $subjectList = implode(", ", $this->subjects);

@@ -115,10 +115,11 @@ use App\Objects\PrimarySchool;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                echo $firstTeacher;
+
+                echo $firstTeacher->introduceMyself();
                 echo "<br>";
                 echo "<br>";
-                echo $secondTeacher;
+                echo $secondTeacher->introduceMyself();
                 ?>
             </div>
         </section>

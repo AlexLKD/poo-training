@@ -66,7 +66,7 @@ use App\Objects\HighSchool;
             <div class="exercice-sandbox">
                 <?php
 
-                $primarySchool = new PrimarySchool("école primaire", "ville primaire", PrimarySchool::$supportedLevels);
+                $primarySchool = new PrimarySchool("école primaire", "ville primaire");
                 var_dump($primarySchool, PrimarySchool::getSupportedLevels());
 
                 $middleSchool = new MiddleSchool("collège", "ville collège");
@@ -89,10 +89,11 @@ use App\Objects\HighSchool;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                $levelToCheck = "CM1";
-                echo "L'école primaire prend en charge la classe de $levelToCheck : " . (PrimarySchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
-                echo "Le collège prend en charge la classe de $levelToCheck : " . (MiddleSchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
-                echo "Le lycée prend en charge la classe de $levelToCheck : " . (HighSchool::supportsLevel($levelToCheck) ? "Oui" : "Non") . "<br>";
+                $levelToCheck = "Seconde";
+                echo PrimarySchool::supportsLevel($levelToCheck) ? "Oui, l'école prend en charge la classe de $levelToCheck" . "<br>" : "Non, l'école ne prend pas en charge la classe de $levelToCheck" . "<br>";
+                echo MiddleSchool::supportsLevel($levelToCheck) ? "Oui, l'école prend en charge la classe de $levelToCheck" . "<br>" : "Non, l'école ne prend pas en charge la classe de $levelToCheck" . "<br>";
+                echo HighSchool::supportsLevel($levelToCheck) ? "Oui, l'école prend en charge la classe de $levelToCheck" . "<br>" : "Non, l'école ne prend pas en charge la classe de $levelToCheck" . "<br>";
+
                 ?>
             </div>
         </section>

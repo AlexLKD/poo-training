@@ -140,10 +140,10 @@ use App\Objects\HighSchool;
             </p>
             <div class="exercice-sandbox">
                 <?php
-                echo $firstStudent;
+                echo $firstStudent->introduceMyself();
                 echo "</br>";
                 echo "</br>";
-                echo $secondStudent;
+                echo $secondStudent->introduceMyself();
                 ?>
             </div>
         </section>
